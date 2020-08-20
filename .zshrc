@@ -14,7 +14,7 @@ short_hostname() {
 setopt HIST_IGNORE_ALL_DUPS
 
 () {
-	local rc="$HOME/.zshrc-$(short_hostname)"
+	local rc="$HOME/.zshrc.$(short_hostname)"
 	[[ -r "$rc" ]] && . "$rc"
 }
 
@@ -24,8 +24,7 @@ setopt HIST_IGNORE_ALL_DUPS
 #
 
 PS1="%B>%b %m %B>%b %~ %B%#%b "
-ERROR_DISPLAY="$([[ '%?' != '0' ]] && echo '[%?]')"
-RPS1=""
+RPS1="%(?..%F{red}[%?]%f)"
 
 bindkey -v
 
